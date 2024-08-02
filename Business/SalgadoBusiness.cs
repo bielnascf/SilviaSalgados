@@ -3,31 +3,39 @@ using Models;
 using Infra.Context;
 using Entity;
 using Microsoft.EntityFrameworkCore;
+using DAO.Interface;
 
 namespace Business
 {
     public class SalgadoBusiness : ISalgadoBusiness
     {
-        private readonly SilviaSalgadosDbContext _context;
 
-        public SalgadoBusiness(SilviaSalgadosDbContext context)
+        private readonly ISalgadoDAO _salgadoDAO;
+
+        public SalgadoBusiness(ISalgadoDAO salgadoDAO)
         {
-            _context = context;
+            _salgadoDAO = salgadoDAO;
         }
 
         public async Task<IList<SalgadoEntity>> ObterSalgadosPorTipoAsync(string tipo)
         {
-            return await _context.Salgados.Where(s => s.TipoSalgado == tipo).ToListAsync();
+            var salgadosObtidosPorTipo = await _salgadoDAO.ListarPor(s => s.TipoSalgado == tipo).ToListAsync();
+
+            return salgadosObtidosPorTipo;
         }
 
         public async Task<SalgadoEntity> ObterSalgadoPorIdAsync(int id)
         {
-            return await _context.Salgados.FindAsync(id);
+            var salgadoObtidoPorId = await _salgadoDAO.ListarPor(s => s.Id == id).SingleOrDefaultAsync();
+
+            return salgadoObtidoPorId;
         }
 
         public async Task<List<SalgadoEntity>> GetAllSalgadosAsync()
         {
-            return await _context.Salgados.ToListAsync();
+            var salgados = await _salgadoDAO.Listar().ToListAsync();
+
+            return salgados;
         }
 
     }

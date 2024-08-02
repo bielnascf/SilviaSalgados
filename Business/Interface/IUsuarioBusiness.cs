@@ -11,10 +11,10 @@ namespace Business.Interface
 {
     public interface IUsuarioBusiness
     {
-        public void RegisterAsync(UsuarioEntity usuario);
+        public Task RegisterAsync(UsuarioEntity usuario);
         public Task<UsuarioEntity> LoginAsync(string email, string senha);
-        public UsuarioEntity ObterUsuarioPorEmail(string email);
+        public Task<UsuarioEntity> ObterUsuarioPorEmail(string email);
         public Task<UsuarioEntity> ObterUsuarioPorIdAsync(int id);
-        public void AtualizarUsuario(UsuarioEntity usuario);
+        public Task AtualizarUsuario(UsuarioEntity usuario);
     }
 }

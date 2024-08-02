@@ -1,4 +1,5 @@
 ﻿using Business.Interface;
+using DAO.Interface;
 using Entity;
 using Infra.Context;
 using Microsoft.EntityFrameworkCore;
@@ -10,46 +11,56 @@ namespace Business
     public class UsuarioBusiness : IUsuarioBusiness
     {
 
+        private readonly IUsuarioDAO _usuarioDAO;
+
         private readonly SilviaSalgadosDbContext _context;
 
-        public UsuarioBusiness(SilviaSalgadosDbContext context)
+        public UsuarioBusiness(IUsuarioDAO usuarioDAO, SilviaSalgadosDbContext context)
         {
+            _usuarioDAO = usuarioDAO;
             _context = context;
         }
 
-        public async void RegisterAsync(UsuarioEntity usuario)
+        public async Task RegisterAsync(UsuarioEntity usuario)
         {
-            var usuarioExistente = await _context.Usuarios.AnyAsync(u => u.Email == usuario.Email);
+            var usuarioExistente = await _usuarioDAO.ListarPor(u => u.Id == usuario.Id).SingleOrDefaultAsync();
 
-            if (usuarioExistente)
+            if (usuarioExistente != null)
             {
                 throw new Exception("Usuário já existe!");
             }
 
-            _context.Usuarios.Add(usuario);
+            _usuarioDAO.Criar(usuario);
+
             await _context.SaveChangesAsync();
         }
 
         public async Task<UsuarioEntity> LoginAsync(string email, string senha)
         {
-            return await _context.Usuarios.SingleOrDefaultAsync(u => u.Email == email && u.Senha == senha);
+            var usuario = await _usuarioDAO.ListarPor(u => u.Email == email && u.Senha == senha).SingleOrDefaultAsync();
+
+            return usuario;
         }
 
-        public UsuarioEntity ObterUsuarioPorEmail(string email)
+        public async Task<UsuarioEntity> ObterUsuarioPorEmail(string email)
         {
-            return _context.Usuarios.SingleOrDefault(u => u.Email == email);
+            var usuarioObtidoPorEmail = await _usuarioDAO.ListarPor(u => u.Email == email).SingleOrDefaultAsync();
+
+            return usuarioObtidoPorEmail;
         }
 
         public async Task<UsuarioEntity> ObterUsuarioPorIdAsync(int id)
         {
-            return await _context.Usuarios.FindAsync(id);
+            var usuarioObtidoPorId = await _usuarioDAO.ListarPor(u => u.Id == id).SingleOrDefaultAsync();
+
+            return usuarioObtidoPorId;
         }
 
-        public void AtualizarUsuario(UsuarioEntity usuario)
+        public async Task AtualizarUsuario(UsuarioEntity usuario)
         {
-            _context.Usuarios.Update(usuario);
+            _usuarioDAO.Editar(usuario);
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
     }
 }

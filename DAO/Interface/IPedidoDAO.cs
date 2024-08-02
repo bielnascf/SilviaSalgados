@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Interface
+namespace DAO.Interface
 {
-    public interface IPedidoBusiness
+    public interface IPedidoDAO : IBaseDAO<PedidoEntity>
     {
-        public Task<PedidoEntity> CriarPedidoAsync(PedidoEntity pedido);
+
     }
 }

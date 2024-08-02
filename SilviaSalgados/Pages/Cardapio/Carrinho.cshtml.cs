@@ -13,11 +13,13 @@ namespace SilviaSalgadosWebApp.Pages.Cardapio
     {
         private readonly ICarrinhoBusiness _carrinhoBusiness;
         private readonly IPedidoBusiness _pedidoBusiness;
+        private readonly IUsuarioBusiness _usuarioBusiness;
 
-        public CarrinhoModel(ICarrinhoBusiness carrinhoBusiness, IPedidoBusiness pedidoBusiness)
+        public CarrinhoModel(ICarrinhoBusiness carrinhoBusiness, IPedidoBusiness pedidoBusiness, IUsuarioBusiness usuarioBusiness)
         {
             _carrinhoBusiness = carrinhoBusiness;
             _pedidoBusiness = pedidoBusiness;
+            _usuarioBusiness = usuarioBusiness;
         }
 
         public IList<ItemCarrinhoEntity> ItensCarrinho { get; set; }
@@ -70,16 +72,21 @@ namespace SilviaSalgadosWebApp.Pages.Cardapio
             }
 
             var usuarioId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var itensCarrinho = await _carrinhoBusiness.ObterItensCarrinhoAsync(int.Parse(usuarioId));
+
+            ItensCarrinho = await _carrinhoBusiness.ObterItensCarrinhoAsync(int.Parse(usuarioId));
+
+            var usuario = await _usuarioBusiness.ObterUsuarioPorIdAsync(int.Parse(usuarioId));
 
             var pedido = new PedidoEntity
             {
                 UsuarioId = int.Parse(usuarioId),
                 DataPedido = DateTime.Now,
                 FormaPagamento = FormaPagamento,
-                Subtotal = Subtotal,
+                Subtotal = ItensCarrinho.Sum(item => item.PrecoTotal),
                 TaxaEntrega = 10,
-                Total = itensCarrinho.Sum(i => i.PrecoTotal) + 10
+                Total = ItensCarrinho.Sum(i => i.PrecoTotal) + 10,
+                ItensCarrinhos = ItensCarrinho,
+                Usuario = usuario
             };
 
             await _carrinhoBusiness.LimparCarrinhoAsync(int.Parse(usuarioId));

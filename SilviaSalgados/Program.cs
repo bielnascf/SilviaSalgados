@@ -1,5 +1,7 @@
 using Business;
 using Business.Interface;
+using DAO;
+using DAO.Interface;
 using Infra.Context;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
@@ -11,6 +13,11 @@ builder.Services.AddScoped<ICarrinhoBusiness, CarrinhoBusiness>();
 builder.Services.AddScoped<IPedidoBusiness, PedidoBusiness>();
 builder.Services.AddScoped<ISalgadoBusiness, SalgadoBusiness>();
 builder.Services.AddScoped<IUsuarioBusiness, UsuarioBusiness>();
+builder.Services.AddScoped<IUsuarioDAO, UsuarioDAO>();
+builder.Services.AddScoped<ISalgadoDAO, SalgadoDAO>();
+builder.Services.AddScoped<ICarrinhoDAO, CarrinhoDAO>();
+builder.Services.AddScoped<IPedidoDAO, PedidoDAO>();
+
 builder.Services.AddDbContext<SilviaSalgadosDbContext>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

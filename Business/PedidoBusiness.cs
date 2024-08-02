@@ -1,4 +1,5 @@
 ﻿using Business.Interface;
+using DAO.Interface;
 using Entity;
 using Infra.Context;
 using Microsoft.EntityFrameworkCore;
@@ -13,18 +14,21 @@ namespace Business
     public class PedidoBusiness : IPedidoBusiness
     {
         private readonly SilviaSalgadosDbContext _context;
-        private readonly ICarrinhoBusiness _carrinhoBusiness;
+        private readonly IPedidoDAO _pedidoDAO;
 
-        public PedidoBusiness(SilviaSalgadosDbContext context, ICarrinhoBusiness carrinhoBusiness)
+        public PedidoBusiness(SilviaSalgadosDbContext context, IPedidoDAO pedidoDAO)
         {
             _context = context;
-            _carrinhoBusiness = carrinhoBusiness;
+            _pedidoDAO = pedidoDAO;
         }
 
-        public Task CriarPedidoAsync(PedidoEntity pedido)
+        public async Task<PedidoEntity> CriarPedidoAsync(PedidoEntity pedido)
         {
-            _context.Pedidos.Add(pedido);
-            return _context.SaveChangesAsync();
+            _pedidoDAO.Criar(pedido);
+
+            await _context.SaveChangesAsync();
+
+            return pedido;
         }
     }
 }
