@@ -1,0 +1,106 @@
+﻿@page
+@model SilviaSalgadosWebApp.Pages.Account.RegisterModel
+@{
+    Layout = "_EmptyLayout";
+}
+
+@section CSS {
+    <link rel="stylesheet" href="~/css/Account/register.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/_emptyLayout.css" asp-append-version="true" />
+}
+
+<header class="py-3 d-flex align-items-center justify-content-between">
+    <div class="d-flex">
+        <a asp-page="/Index" class="logo_link d-flex flex-column text-decoration-none">
+            <span class="logo_silvia fw-bold">Silvia</span>
+            <span class="logo_salgados ms-3 fw-bold">Salgados</span>
+        </a>
+    </div>
+    <div class="d-flex gap-2 align-items-center">
+        <a href="https://www.instagram.com/salgadossilviamp?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><img class="social_media" src="~/assets/icons/instagram-1-svgrepo-com.svg" /></a>
+        <a href="https://wa.me/5521968702424?text=Ol%C3%A1%2C%20Silvia!" target="_blank"><img class="social_media" src="~/assets/icons/whatsapp-svgrepo-com.svg" /></a>
+    </div>
+</header>
+
+<section class="d-flex mt-5 w-100">
+    <a class="btn_back" asp-page="/Account/Login"><img class="back_icon" src="~/assets/icons/back-svgrepo-com.svg" /> Voltar</a>
+</section>
+
+<section class="w-100 mt-5">
+    <h4 class="section_title fw-bold">Cadastrar</h4>
+    <div class="section_line"></div>
+</section>
+
+<div class="mt-5 d-flex justify-content-center">
+    <form class="form_container p-5 text-white d-flex gap-5" method="post" autocomplete="off">
+        <fieldset class="dados_pessoais">
+            <legend class="fs-4 mt-3 text-center">Dados Pessoais</legend>
+            <div class="mb-3">
+                <label for="userName" class="form-label">Nome Completo</label>
+                <input asp-for="Nome" type="text" class="user_input form-control" id="userName" placeholder="Digite o seu nome">
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                <div class="mb-3">
+                    <label for="userEmail" class="form-label">Email</label>
+                    <input asp-for="Email" type="email" class="user_input form-control" id="userEmail" placeholder="Digite seu email">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <label class="form-label" for="userPassword">Senha</label>
+                        <div class="toggle_password mb-2">
+                            <img id="eye_icon" src="~/assets/icons/hidePassword.svg" />
+                        </div>
+                    </div>
+                    <input asp-for="Senha" type="password" class="user_input form-control" id="userPassword" placeholder="Min: 8 caracteres">
+                    <span asp-validation-for="Senha" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="userCelular">Número do Celular</label>
+                <input asp-for="Celular" type="text" class="user_input form-control w-50" id="userCelular" placeholder="Ex: 21999999999" />
+                <span asp-validation-for="Celular" class="text-danger"></span>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend class="fs-4 mt-3 text-center">Endereço para Entrega</legend>
+            <div class="mb-3">
+                <label for="userRua" class="form-label">Nome da Rua</label>
+                <input asp-for="Rua" type="text" class="user_input form-control" id="userRua" placeholder="Digite o nome da sua rua">
+                <span asp-validation-for="Rua" class="text-danger"></span>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                <div class="mb-3">
+                    <label for="userNumero" class="form-label">Numero</label>
+                    <input asp-for="NumeroCasa" type="text" class="user_input form-control" id="userNumero" placeholder="Digite o numero do local">
+                    <span asp-validation-for="NumeroCasa" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="userCidade">Cidade</label>
+                    <select asp-for="Cidade" type="text" class="user_input form-select" id="userCidade">
+                        <option value="niteroi" selected>Niterói</option>
+                        <option value="saoGoncalo">São Gonçalo</option>
+                        <option value="marica">Maricá</option>
+                        <option value="itaipuacu">Itaipuaçu</option>
+                    </select>
+                </div>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                <div class="mb-3">
+                    <label for="userBairro" class="form-label">Bairro</label>
+                    <input asp-for="Bairro" type="text" class="user_input form-control" id="userBairro" placeholder="Digite o nome do bairro">
+                    <span asp-validation-for="Bairro" class="text-danger"></span>
+
+                </div>
+            </div>
+            <div class="w-100 text-end mt-2">
+                <button type="submit" class="btn_cadastrar w-50">Cadastrar <img src="~/assets/icons/register-svgrepo-com.svg" alt="Register Icon"/></button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/js/Account/register.js"></script>
+}

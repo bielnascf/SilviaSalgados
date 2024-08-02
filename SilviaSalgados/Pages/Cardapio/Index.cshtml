@@ -1,0 +1,168 @@
+﻿@page
+@model SilviaSalgadosWebApp.Pages.Cardapio.IndexModel
+@{
+    ViewData["Title"] = "Cardápio";
+}
+
+@section CSS {
+    <link rel="stylesheet" href="~/css/Cardapio/index.css" asp-append-version="true" />
+}
+
+<section class="w-100 d-flex justify-content-end mt-2">
+    <div>
+        <a class="btn_carrinho d-flex align-items-center gap-1" asp-page="/Cardapio/Carrinho">
+            Carrinho
+            <div class="cart_count_container">
+                <img src="~/assets/icons/ShoppingCart.svg" />
+                <span class="cart_count">@Model.ContadorItensCarrinho</span>
+            </div>
+        </a>
+    </div>
+</section>
+
+<section class="hidden">
+    <section class="w-100">
+        <h4 class="section_title fw-bold">Salgados Fritos</h4>
+        <div class="section_line"></div>
+    </section>
+    <section clas="w-100">
+        <div class="d-flex justify-content-between align-items-center py-4">
+            <button class="btn_controls_carousel" data-bs-target="#carouselFritos" data-bs-slide="prev">
+                <img class="card_arrow" src="~/assets/icons/left-chevron-svgrepo-com.svg"  />
+            </button>
+            <div id="carouselFritos" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    @for (int i = 0; i < Model.Fritos.Count; i += 4)
+                    {
+                        <div class="carousel-item @(i == 0 ? "active" : "")">
+                            <div class="py-2 px-1 d-flex justify-content-center gap-4">
+                                @foreach (var salgadoFrito in Model.Fritos.Skip(i).Take(4))
+                                {
+                                    <div class="p-0">
+                                        <div class="card card_salgado d-flex flex-column align-items-center gap-4">
+                                            <div class="card-img-top">
+                                                <img class="card_image" src="~/assets/@salgadoFrito.Imagem" alt="@salgadoFrito.Nome" />
+                                            </div>
+                                            <div class="card-body text-center w-100">
+                                                <a asp-page="/Cardapio/Details" asp-route-id="@salgadoFrito.Id" class="card_link fw-bold">@salgadoFrito.Nome</a>
+                                                <p class="card_info mb-0 w-100 text-break text-start mt-2">@salgadoFrito.Descricao</p>
+                                            </div>
+                                            <div class="card-footer w-100 text-center d-flex flex-column gap-1 pt-3">
+                                                <div class="section_line_card"></div>
+                                                <span class="fw-bold">R$ @salgadoFrito.Preco</span>
+                                            </div>
+                                            <div class="w-100 text-end pb-2 pe-3">
+                                                <a class="card_details" asp-route-id="@salgadoFrito.Id" asp-page="/Cardapio/Details">Ver Detalhes...</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <button class="btn_controls_carousel" data-bs-target="#carouselFritos" data-bs-slide="next">
+                <img class="card_arrow" src="~/assets/icons/right-chevron-svgrepo-com.svg" />
+            </button>
+        </div>
+    </section>
+</section>
+
+<section class="hidden">
+    <section class="w-100">
+        <h4 class="section_title fw-bold">Salgados Assados</h4>
+        <div class="section_line"></div>
+    </section>
+    <section clas="w-100">
+        <div class="d-flex justify-content-between align-items-center py-4">
+            <button class="btn_controls_carousel" data-bs-target="#carouselAssados" data-bs-slide="prev">
+                <img class="card_arrow" src="~/assets/icons/left-chevron-svgrepo-com.svg" />
+            </button>
+            <div id="carouselAssados" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    @for (int i = 0; i < Model.Assados.Count; i += 4)
+                    {
+                        <div class="carousel-item @(i == 0 ? "active" : "")">
+                            <div class="py-2 px-1 d-flex justify-content-center gap-4">
+                                @foreach (var salgadoAssado in Model.Assados.Skip(i).Take(4))
+                                {
+                                    <div class="p-0">
+                                        <div class="card card_salgado d-flex flex-column align-items-center gap-4">
+                                            <div class="card-img-top">
+                                                <img class="card_image" src="~/assets/@salgadoAssado.Imagem" alt="@salgadoAssado.Nome" />
+                                            </div>
+                                            <div class="card-body text-center w-100">
+                                                <a asp-page="/Cardapio/Details" asp-route-id="@salgadoAssado.Id" class="card_link fw-bold">@salgadoAssado.Nome</a>
+                                                <p class="card_info mb-0 w-100 text-break text-start mt-2">@salgadoAssado.Descricao</p>
+                                            </div>
+                                            <div class="card-footer w-100 text-center d-flex flex-column gap-1 pt-3">
+                                                <div class="section_line_card"></div>
+                                                <span class="fw-bold">R$ @salgadoAssado.Preco</span>
+                                            </div>
+                                            <div class="w-100 text-end pb-2 pe-3">
+                                                <a class="card_details" asp-route-id="@salgadoAssado.Id" asp-page="/Cardapio/Details">Ver Detalhes...</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <button class="btn_controls_carousel" data-bs-target="#carouselAssados" data-bs-slide="next">
+                <img class="card_arrow" src="~/assets/icons/right-chevron-svgrepo-com.svg" />
+            </button>
+        </div>
+    </section>
+</section>
+
+<section class="hidden">
+    <section class="w-100">
+        <h4 class="section_title fw-bold">Salgados Especiais</h4>
+        <div class="section_line"></div>
+    </section>
+    <section clas="w-100">
+        <div class="d-flex justify-content-between align-items-center py-4">
+            <button class="btn_controls_carousel" data-bs-target="#carouselEspecial" data-bs-slide="prev">
+                <img class="card_arrow" src="~/assets/icons/left-chevron-svgrepo-com.svg" />
+            </button>
+            <div id="carouselEspecial" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    @for (int i = 0; i < Model.Especiais.Count; i += 4)
+                    {
+                        <div class="carousel-item @(i == 0 ? "active" : "")">
+                            <div class="py-2 px-1 d-flex justify-content-center gap-4">
+                                @foreach (var salgadoEspecial in Model.Especiais.Skip(i).Take(4))
+                                {
+                                    <div class="p-0">
+                                        <div class="card card_salgado d-flex flex-column align-items-center gap-4">
+                                            <div class="card-img-top">
+                                                <img class="card_image" src="~/assets/@salgadoEspecial.Imagem" alt="@salgadoEspecial.Nome" />
+                                            </div>
+                                            <div class="card-body text-center w-100">
+                                                <a asp-page="/Cardapio/Details" asp-route-id="@salgadoEspecial.Id" class="card_link fw-bold">@salgadoEspecial.Nome</a>
+                                                <p class="card_info mb-0 w-100 text-break text-start mt-2">@salgadoEspecial.Descricao</p>
+                                            </div>
+                                            <div class="card-footer w-100 text-center d-flex flex-column gap-1 pt-3">
+                                                <div class="section_line_card"></div>
+                                                <span class="fw-bold">R$ @salgadoEspecial.Preco</span>
+                                            </div>
+                                            <div class="w-100 text-end pb-2 pe-3">
+                                                <a class="card_details" asp-route-id="@salgadoEspecial.Id" asp-page="/Cardapio/Details">Ver Detalhes...</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <button class="btn_controls_carousel" data-bs-target="#carouselEspecial" data-bs-slide="next">
+                <img class="card_arrow" src="~/assets/icons/right-chevron-svgrepo-com.svg" />
+            </button>
+        </div>
+    </section>
+</section>

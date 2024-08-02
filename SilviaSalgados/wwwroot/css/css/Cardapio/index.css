@@ -1,0 +1,98 @@
+﻿.btn_carrinho {
+    padding: 0.6rem 1.4rem;
+    color: var(--text-dark);
+    text-decoration: none;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    box-shadow: 0px 0px 3px #2F2F2F;
+    transition: all .2s ease-in-out;
+}
+
+.btn_carrinho:hover {
+    color: var(--text-dark);
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+.cart_count_container {
+    position: relative;
+}
+
+.cart_count {
+    border-radius: 50%;
+    font-size: 0.7rem;
+    padding: 0 0.3rem;
+    background-color: #d33;
+    color: var(--text-dark);
+    position: absolute;
+    top: 50%;
+    right: -6px;
+}
+
+.section_title {
+    color: var(--secondary-color);
+}
+
+.section_line {
+    height: 1px;
+    background-color: var(--button-principal);
+}
+
+.card_arrow {
+    cursor: pointer;
+}
+
+.btn_controls_carousel {
+    border: none;
+    background-color: transparent;
+}
+
+.card_salgado {
+    background-color: var(--button-principal);
+    border-radius: 10px;
+
+    height: 450px;
+    width: 313px;
+    overflow: hidden;
+    color: var(--text-dark);
+    box-shadow: 1px 1px 6px #2F2F2F;
+    transition: all .3s ease-in-out;
+    border: none;
+}
+
+.card_image {
+    width: 313px;
+    height: 181px;
+}
+
+.card_link {
+    color: var(--text-dark);
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+.card_link:hover {
+    text-decoration: underline;
+    color: var(--text-dark);
+}
+
+.card_info {
+    color: var(--background-dark);
+    font-size: 0.8rem;
+}
+
+.card_details {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.card_details:hover {
+    color: var(--text-dark);
+    text-decoration: underline;
+}
+
+.section_line_card {
+    height: 1px;
+    background-color: var(--text-dark);
+}

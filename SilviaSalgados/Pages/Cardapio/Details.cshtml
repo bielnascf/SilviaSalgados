@@ -1,0 +1,58 @@
+﻿@page
+@model SilviaSalgadosWebApp.Pages.Cardapio.DetailsModel
+@{
+    Layout = "_EmptyLayout";
+    ViewData["Title"] = "Detalhes";
+}
+
+@section CSS {
+    <link rel="stylesheet" href="~/css/Cardapio/details.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/_emptyLayout.css" asp-append-version="true" />
+}
+
+<section class="mt-5">
+    <div class="d-flex">
+        <a asp-page="/Cardapio/Index" class="btn_back d-flex align-items-center gap-1"><img src="~/assets/icons/back-svgrepo-com.svg" class="icon_back"/>Voltar</a>
+    </div>
+</section>
+<section>
+    <section class="w-100 mt-5">
+        <h4 class="section_title fw-bold">Detalhes</h4>
+        <div class="section_line"></div>
+    </section>
+    <section class="mt-5">
+        <div class="details_container d-flex p-5">
+            <div class="w-100">
+                <img class="details_image" src="~/assets/@Model.Salgado.Imagem" alt="@Model.Salgado.Nome" />
+            </div>
+            <form class="w-100 d-flex flex-column px-5 justify-content-between" method="post">
+                <div class="d-flex flex-column gap-3">
+                    <h1 class="text-center display-4 text-light">@Model.Salgado.Nome</h1>
+                    <span class="text-light">Tipo: <span id="type">@Model.Salgado.TipoSalgado</span></span>
+                    <p class="text-light opacity-75 mb-0">@Model.Salgado.Descricao</p>
+                </div>
+                <div class="d-flex flex-column gap-5">
+                    <div class="d-flex align-content-center gap-3">
+                        <label class="text-light display-6">Quantidade:</label>
+                        <select class="select_quantidade" id="quantidade" asp-for="Quantidade">
+                            <option class="select_option" selected value="25">25</option>
+                            <option class="select_option" value="50">50</option>
+                            <option class="select_option" value="75">75</option>
+                            <option class="select_option" value="100">100</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span class="text-light display-6">Preço: R$ <span id="preco">@Model.Salgado.Preco</span></span> @* O preço basico virá do DB *@
+                        <p class="text-light opacity-50">(a partir de 25 unidades)</p>
+                    </div>
+                </div>
+                <input type="hidden" name="id" value="@Model.Salgado.Id" />
+                <button type="submit" class="btn_add">Adicionar ao Carrinho <img src="~/assets/icons/ShoppingCart.svg"/></button>
+            </form>
+        </div>
+    </section>
+</section>
+
+@section Scripts {
+    <script src="~/js/Cardapio/details.js"></script>
+}

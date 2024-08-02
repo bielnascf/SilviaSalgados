@@ -1,0 +1,65 @@
+﻿html {
+    overflow: hidden;
+}
+
+.btn_back {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    box-shadow: 0px 0px 2px #2F2F2F;
+    transition: all .3s ease-in-out;
+}
+
+.btn_back:hover {
+    text-decoration: underline;
+    color: #fff;
+    opacity: 0.8;
+}
+
+.icon_back {
+    filter: invert(1);
+}
+
+.section_title {
+    color: var(--secondary-color);
+}
+
+.section_line {
+    height: 1px;
+    background-color: var(--button-principal);
+}
+
+.details_container {
+    background-color: var(--button-principal);
+    border-radius: 10px;
+
+    box-shadow: 0px 0px 6px #2F2F2F;
+}
+
+.details_image {
+    width: 700px;
+    height: 465px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 6px #2F2F2F;
+}
+
+.select_quantidade {
+    padding: 0.2rem;
+    border-radius: 8px;
+}
+
+.btn_add {
+    padding: 0.7rem;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    border: none;
+    color: #fff;
+    box-shadow: 0px 0px 6px #2F2F2F;
+    transition: all .3s ease-in-out;
+}
+
+.btn_add:hover {
+    background-color: #2e5229;
+}

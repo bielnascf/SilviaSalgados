@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>@ViewData["Title"] - Silvia Salgados</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SilviaSalgados.styles.css" asp-append-version="true" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @await RenderSectionAsync("CSS", required: false)
+</head>
+<body>
+    <header class="header_layout d-flex align-items-center justify-content-between py-3">
+        <div class="d-flex">
+            <a asp-page="/Index" class="logo_link d-flex flex-column text-decoration-none">
+                <span class="logo_silvia fw-bold">Silvia</span>
+                <span class="logo_salgados fw-bold ms-3">Salgados</span>
+            </a>
+        </div>
+        <nav class="d-flex align-items-center gap-5">
+            <a class="nav_link" asp-page="/Index">Início</a>
+            <a class="nav_link" asp-page="/Cardapio/Index">Cardápio</a>
+            <a class="nav_link" asp-page="/AboutMe">Sobre Mim</a>
+            @if(User.Identity.IsAuthenticated)
+            {
+                <a class="nav_link" asp-page="/MyProfile" asp-route-id="">Meu Perfil</a>
+            } else
+            {                
+                <a class="nav_link" asp-page="/Account/Login">Entrar</a>
+            }
+            <div class="d-flex gap-2 align-items-center">
+                <a href="https://www.instagram.com/salgadossilviamp?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><img class="social_media" src="~/assets/icons/instagram-1-svgrepo-com.svg" /></a>
+                <a href="https://wa.me/5521968702424?text=Ol%C3%A1%2C%20Silvia!" target="_blank"><img class="social_media" src="~/assets/icons/whatsapp-svgrepo-com.svg" /></a>
+            </div>
+
+        </nav>
+    </header>
+    <main role="main" class="main_layout">
+        @RenderBody()
+    </main>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

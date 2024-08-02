@@ -1,0 +1,40 @@
+﻿html {
+    overflow: hidden;
+}
+
+main {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.title_content {
+    color: var(--secondary-color);
+}
+
+.obs_index {
+    font-size: 0.8rem;
+}
+
+.btn_pedido {
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+
+    box-shadow: 0px 0px 4px #2F2F2F;
+
+    transition: all .2s ease-in-out;
+}
+
+.btn_pedido:hover {
+    color: #fff;
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+.container_image {
+    margin-right: 4rem;
+}

@@ -1,0 +1,138 @@
+﻿@page
+@model SilviaSalgadosWebApp.Pages.Cardapio.CarrinhoModel
+@{
+    Layout = "_EmptyLayout";
+    ViewData["Title"] = "Carrinho";
+}
+
+@section CSS {
+    <link rel="stylesheet" href="~/css/Cardapio/carrinho.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/_emptyLayout.css" asp-append-version="true" />
+}
+
+<section class="mt-5">
+    <div class="d-flex">
+        <a asp-page="/Cardapio/Index" class="btn_back d-flex align-items-center gap-1"><img src="~/assets/icons/back-svgrepo-com.svg" class="icon_back" />Voltar</a>
+    </div>
+</section>
+<section>
+    <section class="w-100 mt-5">
+        <h4 class="section_title fw-bold">Meu Carrinho</h4>
+        <div class="section_line"></div>
+    </section>
+    <section class="mt-5 d-flex justify-content-between">
+        <div class="table_carrinho_container p-4">
+            @{
+                if(Model.ItensCarrinho.Count <= 0)
+                {
+                    <div class="h-100 w-100 d-flex justify-content-center align-items-center">
+                        <div class="d-flex align-items-center flex-column gap-2 opacity-50">
+                            <div>
+                                <img src="~/assets/icons/ClearShoppingCart.svg" />
+                            </div>
+                            <span class="text-white display-5">Carrinho Vazio</span>
+                        </div>
+                    </div>
+                } else
+                {
+                    <div class="table_container w-100 d-flex flex-column justify-content-between">
+                        <table class="table_">
+                            <thead>
+                                <tr>
+                                    <th class="rounded-start">Produto</th>
+                                    <th class="text-center">Qtd.</th>
+                                    <th class="text-end">Preço Total</th>
+                                    <th class="text-end rounded-end">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.ItensCarrinho)
+                                {
+                                <tr>
+                                    <td>
+                                        <div class="d-flex gap-3 align-items-center">
+                                            <div>
+                                                <img class="product_image" src="~/assets/@item.ImagemURL" />
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <span class="fs-4">@item.Nome</span>
+                                                <p class="description_text mb-0">@item.Descricao</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        @item.Quantidade
+                                    </td>
+                                    <td class="text-end pe-3">
+                                        R$ <span>@item.PrecoTotal</span>
+                                    </td>
+                                    <td class="text-end pe-3">
+                                    <form method="post">                              
+                                        <button type="submit" class="btn_delete" asp-page-handler="RemoverItem" asp-route-id="@item.Id"><img class="trash_delete" src="~/assets/icons/trash-red.svg" /></button>
+                                    </form>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <form method="post">
+                        <button class="btn_clean d-flex align-items-center gap-1" asp-page-handler="LimparCarrinho"><img src="~/assets/icons/trash-white.svg" />Limpar</button>
+                    </form>  
+                }
+            }
+        </div>
+        <form method="post" id="form_finalizarPedido">
+            <div class="d-flex flex-column gap-2">
+                <div class="total_container px-4 py-3">
+                    <div class="d-flex h-100 flex-column justify-content-between">
+                        <div class="w-100 text-white d-flex flex-column gap-4">
+                            <div class="d-flex align-items-center justify-content-between fs-2 fw-bold">
+                                <span>Subtotal</span>
+                                <div>
+                                    <span>@Model.Subtotal.ToString("C")</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between fs-2 fw-bold">
+                                <span>Taxa de Entrega</span>
+                                <div>
+                                    <span>R$ 10,00</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <span class="fs-3 fw-bold">Forma de Pagamento</span>
+                                <select class="select_pagamento" asp-for="FormaPagamento">
+                                    <option value="Pix">Pix</option>
+                                    <option value="Cartao">Cartao</option>
+                                    <option value="Dinheiro">Dinheiro</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="text-center text-white d-flex flex-column gap-2">
+                            <div>
+                                <span class="fs-2 fw-bold">Valor Total</span>
+                            </div>
+                            <div class="valor_line"></div>
+                            <div class="display-4 valor_ fw-bold">
+                                <span>@Model.Total.ToString("C")</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @{
+                if (Model.ItensCarrinho.Count <= 0)
+                {  
+                    <button class="btn_finalizarPedidoOff opacity-75" disabled>Finalizar Pedido <img src="~/assets/icons/ShoppingCart.svg" alt="Alternate Text" /></button>
+                } else
+                {                 
+                    <button type="submit" id="btn_finalizarPedido" class="btn_finalizarPedidoOn w-100" asp-page-handler="FinalizarPedido">Finalizar Pedido <img src="~/assets/icons/ShoppingCart.svg" alt="Alternate Text" /></button>
+                }
+            }
+            </div>
+        </form>
+    </section>
+</section>
+
+@section Scripts {
+    <script src="~/js/Carrinho/carrinho.js"></script>
+}

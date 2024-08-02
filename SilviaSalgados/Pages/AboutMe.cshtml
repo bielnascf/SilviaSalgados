@@ -1,0 +1,57 @@
+﻿@page
+@model SilviaSalgadosWebApp.Pages.AboutMeModel
+@{
+    ViewData["Title"] = "Sobre Mim";
+}
+
+@section CSS {
+    <link rel="stylesheet" href="~/css/AboutMe/index.css" asp-append-version="true" />
+}
+
+<section class="hidden mt-5">
+    <section class="w-100">
+        <h4 class="section_title fw-bold">A Minha História</h4>
+        <div class="section_line"></div>
+    </section>
+    <section class="px-3 py-2">
+        <p class="mb-2 text-dark">
+            <img src="~/assets/icons/paragraph-svgrepo-com.svg" alt="Alternate Text" /> Silvia é uma apaixonada pela culinária e há mais de 20 anos transforma ingredientes simples em verdadeiras obras de arte gastronômica. Tudo começou em sua pequena cozinha em Niterói, onde ela, com muita dedicação e amor, começou a preparar salgadinhos artesanais para familiares e amigos.
+        </p>
+        <p class="mb-2 text-dark">
+            <img src="~/assets/icons/paragraph-svgrepo-com.svg" alt="Alternate Text" /> Com o tempo, a fama dos salgadinhos de Silvia se espalhou pela cidade. Sua participação em diversos eventos em Niterói solidificou sua reputação como uma das melhores quituteiras da região. De festas de aniversário a grandes celebrações corporativas, os salgadinhos de Silvia tornaram-se presença garantida, sempre recebidos com entusiasmo e elogios.
+        </p>
+        <section class="d-flex align-items-center justify-content-center pt-1 pb-3">
+            <section class="carousel_wrapper d-flex align-items-center gap-2">
+                <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                    <img src="~/assets/icons/left-chevron-svgrepo-com.svg" />
+                </button>
+                <div id="carouselExampleAutoplaying" class="carousel slide w-100 h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner w-100 h-100">
+                        <div class="carousel-item active w-100 h-100">
+                            <div class="w-100 carousel_item1"></div>
+                        </div>
+                        <div class="carousel-item w-100 h-100">
+                            <div class="w-100 carousel_item2"></div>
+                        </div>
+                        <div class="carousel-item w-100 h-100">
+                            <div class="w-100 carousel_item3"></div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                    <img src="~/assets/icons/right-chevron-svgrepo-com.svg" />
+                </button>
+            </section>
+        </section>
+        <p class="mb-2 text-dark">
+            <img src="~/assets/icons/paragraph-svgrepo-com.svg" alt="Alternate Text" /> Cada encomenda que Silvia recebe é tratada com o mesmo carinho e atenção aos detalhes que ela dedicou ao seu primeiro salgadinho. Seu compromisso com a qualidade e o sabor é inigualável, e isso é refletido em cada mordida dos seus deliciosos quitutes.
+        </p>
+        <p class="mb-2 text-dark">
+            <img src="~/assets/icons/paragraph-svgrepo-com.svg" alt="Alternate Text" /> Ao longo de sua carreira, Silvia aperfeiçoou suas receitas e ampliou seu cardápio, sempre mantendo a essência artesanal que conquistou tantos paladares. Sua história é um testemunho de paixão, dedicação e amor pela culinária, elementos que fazem de cada salgadinho uma verdadeira experiência gastronômica.
+        </p>
+        <p class="mb-2 text-dark">
+            <img src="~/assets/icons/paragraph-svgrepo-com.svg" alt="Alternate Text" /> Hoje, Silvia continua a encantar com seus salgadinhos artesanais, mantendo viva a tradição e o sabor que a tornaram uma referência em Niterói. Seja para pequenos encontros ou grandes festas, os salgadinhos de Silvia são sinônimo de qualidade e sabor incomparáveis.
+        </p>
+    </section>
+   
+</section>

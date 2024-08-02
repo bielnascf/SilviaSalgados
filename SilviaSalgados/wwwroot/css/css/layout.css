@@ -1,0 +1,103 @@
+:root {
+    --background-dark: #2F2F2F;
+    --background: #fffafa;
+
+    --text-dark: #fff;
+    --text-light: #2F2F2F;
+
+    --primary-color: #3A6633;
+    --secondary-color: #E6C321;
+
+    --button-principal: #D98A29;
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    max-width: 1440px;
+    margin: 0 auto;
+    background-color: var(--background);
+    -webkit-font-smoothing: antialiased;
+}
+
+.logo_link {
+    transition: all .3s ease-in-out;
+}
+
+.logo_link:hover {
+    transform: scale(1.02);
+}
+
+.logo_silvia {
+    color: #3A6633;
+}
+
+.logo_salgados {
+    color: #E6C321;
+}
+
+.nav_link {
+    position: relative;
+    padding-bottom: 0.3rem;
+    color: var(--text-light);
+    text-decoration: none;
+}
+
+.nav_link:hover {
+    color: var(--text-light);
+}
+
+.nav_link::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--button-principal);
+    transition: all 0.3s ease;
+}
+
+.nav_link:hover::after {
+    width: 80%;
+}
+
+.social_media {
+    width: 30px;
+    height: 30px;
+
+    transition: all .3s ease-in-out;
+}
+
+.social_media:hover {
+    transform: scale(1.05);
+}
+
+.hidden {
+    opacity: 0;
+    transition: all .5s ease-in;
+}
+
+.show {
+    opacity: 1;
+}

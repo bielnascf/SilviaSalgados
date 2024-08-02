@@ -1,0 +1,29 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@section CSS {
+    <link rel="stylesheet" href="~/css/Index/index.css" asp-append-version="true" />
+}
+
+<div class="d-flex align-items-center justify-content-around hidden">
+    <div class="d-flex flex-column gap-2 w-50">
+        <h1 class="title_content display-3">Sabor em Cada Mordida!</h1>
+        <div class="">
+            <p class="text-dark">
+                Experimente a qualidade e o sabor que só os nossos salgadinhos podem oferecer. Perfeitos para festas, eventos ou um lanche delicioso.
+            </p>
+            <p class="text-dark obs_index">
+                <strong>*Entregas somente em Niterói, Maricá, Itaipuaçu, São Gonçalo e Adjacências.</strong>
+            </p>
+        </div>
+        <div class="mt-2 d-flex">
+            <a class="btn_pedido d-flex align-items-center gap-1 mt-4" asp-page="/Cardapio/Index">Faça seu pedido <img src="~/assets/icons/right-arrow-svgrepo-com.svg"/></a>
+        </div>
+    </div>
+    <div class="mb-5">
+        <img class="" src="~/assets/background-coxinha.png" />
+    </div>
+</div>
