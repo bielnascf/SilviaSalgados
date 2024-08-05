@@ -61,7 +61,7 @@ namespace SilviaSalgadosWebApp.Pages.Account
                 Bairro = Bairro
             };
 
-            _usuarioBusiness.RegisterAsync(usuario);
+            await _usuarioBusiness.RegisterAsync(usuario);
 
             return RedirectToPage("/Account/Login");
         }

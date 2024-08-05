@@ -24,6 +24,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         .AddCookie(options =>
         {
             options.LoginPath = "/Account/Login";
+            options.ExpireTimeSpan = TimeSpan.FromMinutes(15);
+            options.SlidingExpiration = true;
             options.LogoutPath = "/Account/Logout";
             options.Cookie.Name = "SilviaSalgadosCookie";
         });
@@ -31,7 +33,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 builder.Services.AddAuthorization();
 builder.Services.AddMvc();
 
-    var app = builder.Build();
+var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
 {

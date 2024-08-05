@@ -11,18 +11,13 @@ namespace Entity
     public class PedidoEntity
     {
         public int Id { get; set; }
-
-        [Required]
         public int UsuarioId { get; set; }
-
-        [Required]
         public DateTime DataPedido { get; set; } = DateTime.Now;
-
         public string FormaPagamento { get; set; }
-
         public decimal Subtotal { get; set; }
         public decimal TaxaEntrega { get; set; } = 10.00m;
         public decimal Total { get; set; }
+
 
         public UsuarioEntity Usuario { get; set; }
 
