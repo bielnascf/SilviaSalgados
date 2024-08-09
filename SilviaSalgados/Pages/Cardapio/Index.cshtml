@@ -30,7 +30,7 @@
             <button class="btn_controls_carousel" data-bs-target="#carouselFritos" data-bs-slide="prev">
                 <img class="card_arrow" src="~/assets/icons/left-chevron-svgrepo-com.svg"  />
             </button>
-            <div id="carouselFritos" class="carousel slide" data-ride="carousel">
+            <div id="carouselFritos" class="carousel slide">
                 <div class="carousel-inner">
                     @for (int i = 0; i < Model.Fritos.Count; i += 4)
                     {
@@ -52,7 +52,7 @@
                                                 <span class="fw-bold">R$ @salgadoFrito.Preco</span>
                                             </div>
                                             <div class="w-100 text-end pb-2 pe-3">
-                                                <a class="card_details" asp-route-id="@salgadoFrito.Id" asp-page="/Cardapio/Details">Ver Detalhes...</a>
+                                                <a class="card_details" asp-page="/Cardapio/Details" asp-route-id="@salgadoFrito.Id">Ver Detalhes...</a>
                                             </div>
                                         </div>
                                     </div>
@@ -79,7 +79,7 @@
             <button class="btn_controls_carousel" data-bs-target="#carouselAssados" data-bs-slide="prev">
                 <img class="card_arrow" src="~/assets/icons/left-chevron-svgrepo-com.svg" />
             </button>
-            <div id="carouselAssados" class="carousel slide" data-ride="carousel">
+            <div id="carouselAssados" class="carousel slide">
                 <div class="carousel-inner">
                     @for (int i = 0; i < Model.Assados.Count; i += 4)
                     {
@@ -128,7 +128,7 @@
             <button class="btn_controls_carousel" data-bs-target="#carouselEspecial" data-bs-slide="prev">
                 <img class="card_arrow" src="~/assets/icons/left-chevron-svgrepo-com.svg" />
             </button>
-            <div id="carouselEspecial" class="carousel slide" data-ride="carousel">
+            <div id="carouselEspecial" class="carousel slide">
                 <div class="carousel-inner">
                     @for (int i = 0; i < Model.Especiais.Count; i += 4)
                     {

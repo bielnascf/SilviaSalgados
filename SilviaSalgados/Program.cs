@@ -24,7 +24,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         .AddCookie(options =>
         {
             options.LoginPath = "/Account/Login";
-            options.ExpireTimeSpan = TimeSpan.FromMinutes(15);
+            options.ExpireTimeSpan = TimeSpan.FromMinutes(2);
             options.SlidingExpiration = true;
             options.LogoutPath = "/Account/Logout";
             options.Cookie.Name = "SilviaSalgadosCookie";

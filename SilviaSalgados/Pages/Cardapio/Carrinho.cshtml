@@ -84,23 +84,23 @@
         </div>
         <form method="post" id="form_finalizarPedido">
             <div class="d-flex flex-column gap-2">
-                <div class="total_container px-4 py-3">
+                <div class="total_container p-4">
                     <div class="d-flex h-100 flex-column justify-content-between">
                         <div class="w-100 text-white d-flex flex-column gap-4">
-                            <div class="d-flex align-items-center justify-content-between fs-2 fw-bold">
+                            <div class="d-flex align-items-center justify-content-between fs-4 fw-bold">
                                 <span>Subtotal</span>
                                 <div>
                                     <span>@Model.Subtotal.ToString("C")</span>
                                 </div>
                             </div>
-                            <div class="d-flex align-items-center justify-content-between fs-2 fw-bold">
+                            <div class="d-flex align-items-center justify-content-between fs-4 fw-bold">
                                 <span>Taxa de Entrega</span>
                                 <div>
                                     <span>R$ 10,00</span>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center justify-content-between">
-                                <span class="fs-3 fw-bold">Forma de Pagamento</span>
+                                <span class="fs-4 fw-bold">Forma de Pagamento</span>
                                 <select class="select_pagamento" asp-for="FormaPagamento">
                                     <option value="Pix">Pix</option>
                                     <option value="Cartao">Cartao</option>

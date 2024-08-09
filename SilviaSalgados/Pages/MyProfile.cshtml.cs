@@ -1,13 +1,10 @@
-using Business;
 using Business.Interface;
-using Entity;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Models;
+using SilviaSalgadosWebApp.Models;
 using System.Security.Claims;
-using System.ComponentModel.DataAnnotations;
 
 namespace SilviaSalgadosWebApp.Pages
 {
@@ -20,7 +17,7 @@ namespace SilviaSalgadosWebApp.Pages
             _usuarioBusiness = usuarioBusiness;
         }
 
-        [BindProperty]
+        /*[BindProperty]
         public string Nome { get; set; }
 
         [BindProperty]
@@ -41,7 +38,9 @@ namespace SilviaSalgadosWebApp.Pages
         public string Cidade { get; set; }
 
         [BindProperty]
-        public string Bairro { get; set; }
+        public string Bairro { get; set; }*/
+
+        public UsuarioViewModel UsuarioViewModel { get; set; }
 
         public async Task<IActionResult> OnGetAsync()
         {
@@ -55,14 +54,14 @@ namespace SilviaSalgadosWebApp.Pages
                 return NotFound();
             }
 
-            Nome = usuario.Nome;
-            Email = usuario.Email;
-            Senha = usuario.Senha;
-            Celular = usuario.Celular;
-            Rua = usuario.Rua;
-            NumeroCasa = usuario.NumeroCasa;
-            Cidade = usuario.Cidade;
-            Bairro = usuario.Bairro;
+            UsuarioViewModel.Nome = usuario.Nome;
+            UsuarioViewModel.Email = usuario.Email;
+            UsuarioViewModel.Senha = usuario.Senha;
+            UsuarioViewModel.Celular = usuario.Celular;
+            UsuarioViewModel.Rua = usuario.Rua;
+            UsuarioViewModel.NumeroCasa = usuario.NumeroCasa;
+            UsuarioViewModel.Cidade = usuario.Cidade;
+            UsuarioViewModel.Bairro = usuario.Bairro;
 
             return Page();
             
@@ -79,16 +78,16 @@ namespace SilviaSalgadosWebApp.Pages
 
             var usuario = await _usuarioBusiness.ObterUsuarioPorIdAsync(int.Parse(usuarioId));
 
-            usuario.Nome = Nome;
-            usuario.Email = Email;
-            usuario.Senha = Senha;
-            usuario.Celular = Celular;
-            usuario.Rua = Rua;
-            usuario.Bairro = Bairro;
-            usuario.Cidade = Cidade;
-            usuario.NumeroCasa = NumeroCasa;
+            usuario.Nome = UsuarioViewModel.Nome;
+            usuario.Email = UsuarioViewModel.Email;
+            usuario.Senha = UsuarioViewModel.Senha;
+            usuario.Celular = UsuarioViewModel.Celular;
+            usuario.Rua = UsuarioViewModel.Rua;
+            usuario.Bairro = UsuarioViewModel.Bairro;
+            usuario.Cidade = UsuarioViewModel.Cidade;
+            usuario.NumeroCasa = UsuarioViewModel.NumeroCasa;
 
-            _usuarioBusiness.AtualizarUsuario(usuario);
+            await _usuarioBusiness.AtualizarUsuario(usuario);
 
             return RedirectToPage("/Index");
         }

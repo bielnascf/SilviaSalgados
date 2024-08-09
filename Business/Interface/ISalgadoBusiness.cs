@@ -10,8 +10,8 @@ namespace Business.Interface
 {
     public interface ISalgadoBusiness
     {
-        Task<IList<SalgadoEntity>> ObterSalgadosPorTipoAsync(string tipo);
+        public Task<List<SalgadoEntity>> ObterSalgadosPorTipoAsync(string tipo);
         public Task<List<SalgadoEntity>> GetAllSalgadosAsync();
-        Task<SalgadoEntity> ObterSalgadoPorIdAsync(int id);
+        public Task<SalgadoEntity> ObterSalgadoPorIdAsync(int id);
     }
 }

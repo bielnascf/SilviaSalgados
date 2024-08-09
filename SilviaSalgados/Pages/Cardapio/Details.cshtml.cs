@@ -1,10 +1,7 @@
-using Business;
 using Business.Interface;
 using Entity;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Models;
 using System.Security.Claims;
 
 namespace SilviaSalgadosWebApp.Pages.Cardapio

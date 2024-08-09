@@ -1,9 +1,7 @@
 ﻿using Business.Interface;
-using Models;
-using Infra.Context;
+using DAO.Interface;
 using Entity;
 using Microsoft.EntityFrameworkCore;
-using DAO.Interface;
 
 namespace Business
 {
@@ -17,7 +15,7 @@ namespace Business
             _salgadoDAO = salgadoDAO;
         }
 
-        public async Task<IList<SalgadoEntity>> ObterSalgadosPorTipoAsync(string tipo)
+        public async Task<List<SalgadoEntity>> ObterSalgadosPorTipoAsync(string tipo)
         {
             var salgadosObtidosPorTipo = await _salgadoDAO.ListarPor(s => s.TipoSalgado == tipo).ToListAsync();
 

@@ -1,8 +1,6 @@
-using Business;
 using Business.Interface;
 using Entity;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Models;
 using System.Security.Claims;
 
 namespace SilviaSalgadosWebApp.Pages.Cardapio
@@ -19,9 +17,9 @@ namespace SilviaSalgadosWebApp.Pages.Cardapio
             _carrinhoBusiness = carrinhoBusiness;
         }
 
-        public IList<SalgadoEntity> Fritos { get; set; }
-        public IList<SalgadoEntity> Assados { get; set; }
-        public IList<SalgadoEntity> Especiais { get; set; }
+        public List<SalgadoEntity> Fritos { get; set; }
+        public List<SalgadoEntity> Assados { get; set; }
+        public List<SalgadoEntity> Especiais { get; set; }
 
         public int ContadorItensCarrinho { get; set; }
 

@@ -109,7 +109,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Business\Business.csproj" />
     <ProjectReference Include="..\DAO\DAO.csproj" />
-    <ProjectReference Include="..\Entity\Entity.csproj" />
     <ProjectReference Include="..\Infra\Infra.csproj" />
     <ProjectReference Include="..\Models\Models.csproj" />
   </ItemGroup>

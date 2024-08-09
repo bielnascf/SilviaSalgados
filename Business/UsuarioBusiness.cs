@@ -4,7 +4,6 @@ using Entity;
 using Infra.Context;
 using Microsoft.EntityFrameworkCore;
 using Models;
-using System;
 
 namespace Business
 {
@@ -21,16 +20,19 @@ namespace Business
             _context = context;
         }
 
-        public async Task RegisterAsync(UsuarioEntity usuario)
+        public async Task RegisterAsync(UsuarioModel usuario)
         {
-            var usuarioExistente = await _usuarioDAO.ListarPor(u => u.Id == usuario.Id).SingleOrDefaultAsync();
+
+            var usuarioExistente = await _usuarioDAO.ListarPor(u => u.Email == usuario.Email).SingleOrDefaultAsync();
 
             if (usuarioExistente != null)
             {
                 throw new Exception("Usuário já existe!");
             }
 
-            _usuarioDAO.Criar(usuario);
+            var usuarioEntity = (UsuarioEntity)usuario;
+
+            _usuarioDAO.Criar(usuarioEntity);
 
             await _context.SaveChangesAsync();
         }

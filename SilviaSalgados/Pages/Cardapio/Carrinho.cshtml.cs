@@ -1,11 +1,8 @@
-using Business;
 using Business.Interface;
 using Entity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Models;
 using System.Security.Claims;
-using System.Text.Json.Nodes;
 
 namespace SilviaSalgadosWebApp.Pages.Cardapio
 {
@@ -22,10 +19,17 @@ namespace SilviaSalgadosWebApp.Pages.Cardapio
             _usuarioBusiness = usuarioBusiness;
         }
 
-        public IList<ItemCarrinhoEntity> ItensCarrinho { get; set; }
+        public List<ItemCarrinhoEntity> ItensCarrinho { get; set; }
+
+        [BindProperty]
         public decimal Subtotal { get; set; }
+
+        [BindProperty]
         public decimal TaxaEntrega { get; set; } = 10.00m;
+
+        [BindProperty]
         public decimal Total { get; set; }
+
         [BindProperty]
         public string FormaPagamento { get; set; }
 

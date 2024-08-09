@@ -32,7 +32,7 @@
             <div class="d-flex flex-column gap-3">
                 <div>
                     <label for="userEmail" class="form-label">Email</label>
-                    <input asp-for="Email" type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Digite o seu email registrado">
+                    <input asp-for="UsuarioViewModel.Email" type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Digite o seu email registrado">
                 </div>
                 <div>
                     <div class="d-flex align-items-center justify-content-between">
@@ -41,7 +41,7 @@
                             <img id="eye_icon" src="~/assets/icons/hidePassword.svg" />
                         </div>
                     </div>
-                    <input asp-for="Senha" type="password" class="form-control" id="userPassword" placeholder="Digite a sua senha registrada">
+                    <input asp-for="UsuarioViewModel.Senha" type="password" class="form-control" id="userPassword" placeholder="Digite a sua senha registrada">
                 </div>
             </div>
             <div class="text-center">

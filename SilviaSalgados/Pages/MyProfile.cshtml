@@ -44,13 +44,13 @@
             <legend class="fs-4 mt-3 text-center">Dados Pessoais</legend>
             <div class="mb-3">
                 <label for="userName" class="form-label">Nome Completo</label>
-                <input asp-for="Nome" type="text" class="user_input form-control" id="userName" placeholder="Digite o seu nome">
-                <span asp-validation-for="Nome" class="text-danger"></span>
+                <input asp-for="UsuarioViewModel.Nome" type="text" class="user_input form-control" id="userName" placeholder="Digite o seu nome">
+                <span asp-validation-for="UsuarioViewModel.Nome" class="text-danger"></span>
             </div>
             <div class="d-flex align-items-center gap-3">
                 <div class="mb-3">
                     <label for="userEmail" class="form-label">Email</label>
-                    <input asp-for="Email" type="email" class="user_input opacity-75 form-control" id="userEmail" placeholder="Digite seu email"  readonly>
+                    <input asp-for="UsuarioViewModel.Email" type="email" class="user_input opacity-75 form-control" id="userEmail" placeholder="Digite seu email" readonly>
                 </div>
                 <div class="mb-3">
                     <div class="d-flex align-items-center justify-content-between">
@@ -59,32 +59,32 @@
                             <img id="eye_icon" src="~/assets/icons/hidePassword.svg" />
                         </div>
                     </div>
-                    <input asp-for="Senha" type="password" class="user_input form-control" id="userPassword" placeholder="Min: 8 caracteres">
-                    <span asp-validation-for="Senha" class="text-danger"></span>
+                    <input asp-for="UsuarioViewModel.Senha" type="password" class="user_input form-control" id="userPassword" placeholder="Min: 8 caracteres">
+                    <span asp-validation-for="UsuarioViewModel.Senha" class="text-danger"></span>
                 </div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="userCelular">Número do Celular</label>
-                <input asp-for="Celular" type="text" class="user_input form-control w-50" id="userCelular" placeholder="Ex: 21999999999" />
-                <span asp-validation-for="Celular" class="text-danger"></span>
+                <input asp-for="UsuarioViewModel.Celular" type="text" class="user_input form-control w-50" id="userCelular" placeholder="Ex: 21999999999" />
+                <span asp-validation-for="UsuarioViewModel.Celular" class="text-danger"></span>
             </div>
         </fieldset>
         <fieldset>
             <legend class="fs-4 mt-3 text-center">Endereço para Entrega</legend>
             <div class="mb-3">
                 <label for="userRua" class="form-label">Nome da Rua</label>
-                <input asp-for="Rua" type="text" class="user_input form-control" id="userRua" placeholder="Digite o nome da sua rua">
-                <span asp-validation-for="Rua" class="text-danger"></span>
+                <input asp-for="UsuarioViewModel.Rua" type="text" class="user_input form-control" id="userRua" placeholder="Digite o nome da sua rua">
+                <span asp-validation-for="UsuarioViewModel.Rua" class="text-danger"></span>
             </div>
             <div class="d-flex align-items-center gap-3">
                 <div class="mb-3">
                     <label for="userNumero" class="form-label">Numero</label>
-                    <input asp-for="NumeroCasa" type="text" class="user_input form-control" id="userNumero" placeholder="Digite o numero do local">
-                    <span asp-validation-for="NumeroCasa" class="text-danger"></span>
+                    <input asp-for="UsuarioViewModel.NumeroCasa" type="text" class="user_input form-control" id="userNumero" placeholder="Digite o numero do local">
+                    <span asp-validation-for="UsuarioViewModel.NumeroCasa" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="userCidade">Cidade</label>
-                    <select asp-for="Cidade" type="text" class="user_input form-select" id="userCidade">
+                    <select asp-for="UsuarioViewModel.Cidade" type="text" class="user_input form-select" id="userCidade">
                         <option value="niteroi" selected>Niterói</option>
                         <option value="saoGoncalo">São Gonçalo</option>
                         <option value="marica">Maricá</option>
@@ -95,8 +95,8 @@
             <div class="d-flex align-items-center gap-3">
                 <div class="mb-3">
                     <label for="userBairro" class="form-label">Bairro</label>
-                    <input asp-for="Bairro" type="text" class="user_input form-control" id="userBairro" placeholder="Digite o nome do bairro">
-                    <span asp-validation-for="Bairro" class="text-danger"></span>
+                    <input asp-for="UsuarioViewModel.Bairro" type="text" class="user_input form-control" id="userBairro" placeholder="Digite o nome do bairro">
+                    <span asp-validation-for="UsuarioViewModel.Bairro" class="text-danger"></span>
 
                 </div>
             </div>

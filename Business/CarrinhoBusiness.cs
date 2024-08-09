@@ -3,8 +3,6 @@ using DAO.Interface;
 using Entity;
 using Infra.Context;
 using Microsoft.EntityFrameworkCore;
-using Models;
-using System.Linq;
 
 namespace Business
 {
@@ -42,7 +40,7 @@ namespace Business
             return itemCarrinho;
         }
 
-        public async Task<IList<ItemCarrinhoEntity>> ObterItensCarrinhoAsync(int usuarioId)
+        public async Task<List<ItemCarrinhoEntity>> ObterItensCarrinhoAsync(int usuarioId)
         {
             var itensCarrinho = await _carrinhoDAO.Listar().Where(i => i.UsuarioId == usuarioId).ToListAsync();
 

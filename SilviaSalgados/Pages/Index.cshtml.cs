@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using SilviaSalgadosWebApp.Models;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace SilviaSalgadosWebApp.Pages
 {

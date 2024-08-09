@@ -1,11 +1,10 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
+using Business.Interface;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using SilviaSalgadosWebApp.Models;
 using System.Security.Claims;
-using Business;
-using Business.Interface;
-using System.ComponentModel.DataAnnotations;
 
 namespace SilviaSalgadosWebApp.Pages.Account
 {
@@ -18,13 +17,15 @@ namespace SilviaSalgadosWebApp.Pages.Account
             _usuarioBusiness = usuarioBusiness;
         }
 
-        [BindProperty]
+        /*[BindProperty]
         [EmailAddress]
         public string Email { get; set; }
 
         [BindProperty]
         [DataType(DataType.Password)]
-        public string Senha { get; set; }
+        public string Senha { get; set; }*/
+        
+        public UsuarioViewModel UsuarioViewModel { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -33,7 +34,7 @@ namespace SilviaSalgadosWebApp.Pages.Account
                 return Page();
             }
 
-            var user = await _usuarioBusiness.LoginAsync(Email, Senha);
+            var user = await _usuarioBusiness.LoginAsync(UsuarioViewModel.Email, UsuarioViewModel.Senha);
 
             if(user != null)
             {

@@ -1,18 +1,15 @@
-using Business;
 using Business.Interface;
-using Entity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 using Models;
-using System.ComponentModel.DataAnnotations;
+using SilviaSalgadosWebApp.Models;
 
 namespace SilviaSalgadosWebApp.Pages.Account
 {
     public class RegisterModel : PageModel
     {
         private readonly IUsuarioBusiness _usuarioBusiness;
-
+/*
         [BindProperty]
         public string Nome { get; set; }
 
@@ -35,7 +32,9 @@ namespace SilviaSalgadosWebApp.Pages.Account
         public string Cidade { get; set; }
 
         [BindProperty]
-        public string Bairro { get; set; }
+        public string Bairro { get; set; }*/
+
+        public UsuarioViewModel UsuarioViewModel { get; set; }
 
         public RegisterModel(IUsuarioBusiness usuarioBusiness)
         {
@@ -49,16 +48,16 @@ namespace SilviaSalgadosWebApp.Pages.Account
                 return Page();
             }
 
-            var usuario = new UsuarioEntity
+            var usuario = new UsuarioModel
             {
-                Nome = Nome,
-                Email = Email,
-                Senha = Senha,
-                Celular = Celular,
-                Rua = Rua,
-                NumeroCasa = NumeroCasa,
-                Cidade = Cidade,
-                Bairro = Bairro
+                Nome = UsuarioViewModel.Nome,
+                Email = UsuarioViewModel.Email,
+                Senha = UsuarioViewModel.Senha,
+                Celular = UsuarioViewModel.Celular,
+                Rua = UsuarioViewModel.Rua,
+                NumeroCasa = UsuarioViewModel.NumeroCasa,
+                Cidade = UsuarioViewModel.Cidade,
+                Bairro = UsuarioViewModel.Bairro
             };
 
             await _usuarioBusiness.RegisterAsync(usuario);

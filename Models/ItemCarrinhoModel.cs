@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class Salgado
+    public class ItemCarrinhoModel
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string SalgadoType { get; set; }
-        public double Price { get; set; }
+        public int SalgadoId { get; set; }
         public string ImageURL { get; set; }
+        public string Title { get; set; }
+        public string SalgadoType { get; set; }
+        public string Description { get; set; }
+        public double Price { get; set; }
+        public int Quantity { get; set; }
     }
 }
